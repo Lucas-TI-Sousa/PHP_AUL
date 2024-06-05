@@ -42,11 +42,21 @@ class ContaCorrente extends Conta{
 }
 
 class ContaPoupanca extends Conta{
-
+    constructor(numero, saldo = 0, taxaRendimento = 0.2) {
+        super(numero, saldo);
+        this.taxaRendimento = taxaRendimento;
+    }
+    aplicarRendimento() {
+        console.log("Rendimento aplicado")
+    }
 }
 
-
 let contaC = new ContaCorrente(2001, 500);
+let contaP = new ContaPoupanca(2002, 500);
+
 console.log(contaC.toString());
 contaC.sacar(650);
 console.log(contaC.toString());
+
+contaP.aplicarRendimento();
+//contaC.aplicarRendimento(); # erro por não existir função nessa classe
