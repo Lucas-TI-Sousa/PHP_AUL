@@ -7,8 +7,9 @@ class Conta {
     sacar(valor) {
         if(this.saldo >= valor && valor > 0) {
             this.saldo -= valor;
+            return true
         } else {
-            console.log("Saldo insuficiente");
+            return false;
         }
     }
 
@@ -18,12 +19,19 @@ class Conta {
         }
     }
 
+    // Transferir (conta)
+    transferir(valor, contaDestino) {
+        if(this.sacar(valor)) {
+            contaDestino.depositar(valor);
+        }
+    }
+
     toString() {
         return `Numero: ${this.numero} - Saldo: ${this.saldo}`;
     }
 }
 
-class ContaCorrente extends Conta{
+class ContaCorrente extends Conta {
     constructor(numero, saldo = 0, limiteChequeEspecial = 200) {
         super(numero, saldo);
         this.limiteChequeEspecial = limiteChequeEspecial;
@@ -41,13 +49,14 @@ class ContaCorrente extends Conta{
     }
 }
 
-class ContaPoupanca extends Conta{
+class ContaPoupanca extends Conta {    
     constructor(numero, saldo = 0, taxaRendimento = 0.2) {
-        super(numero, saldo);
+        super(numero, saldo)
         this.taxaRendimento = taxaRendimento;
     }
+
     aplicarRendimento() {
-        console.log("Rendimento aplicado")
+        console.log("Rendimento aplicado");
     }
 }
 
@@ -60,3 +69,7 @@ console.log(contaC.toString());
 
 contaP.aplicarRendimento();
 //contaC.aplicarRendimento(); # erro por não existir função nessa classe
+
+contaP.transferir(200, contaC);
+console.log(contaC);
+console.log(contaP);
