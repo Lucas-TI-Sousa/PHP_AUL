@@ -1,0 +1,60 @@
+<?php
+////INTRODUÇÃO A ARRAYS EM PHP
+
+//dEFINIÇÃO DE ARRAYS
+$frutas = array("Maçã", "Banana", "Laranja", "Morango");
+print_r($frutas);
+echo "<br>";
+
+$numeros = [2, 5, 6, 9];
+print_r($numeros);
+echo "<br>";
+
+$alunos = array("João" => 18, "Maria" => 20, "Pedro" => 19);
+print_r($alunos);
+echo "<br>";
+
+//Acessando  elementos de um array
+echo "A segunda fruta é: " . $frutas[1] . "<br>";
+echo "O terceiro número é: " . $numeros[2] . "<br>";
+echo "A idade de João é: " . $alunos["João"] . "anos <br>";
+
+// Alterando elementos de um array
+$frutas[0] = "pera";
+print_r($frutas);
+echo "<br>";
+
+$numeros[4] = 100;
+print_r($numeros);
+echo "<br>";
+
+$alunos["Maria"] = 21;
+$alunos["Ana"] = 21;
+print_r($alunos);
+
+// Adicionando elementos em um Array
+$frutas[] = "Abacaxi";
+$numeros[] = 93;
+$alunos["José"] = 25;
+
+echo "<hr>";
+
+// Percorrendo um array com foreach
+echo "Lista de Frutas: ";
+foreach($frutas as $fruta) {
+    echo $fruta . " ";
+}
+echo "<br>";
+
+foreach($numeros as $numero) {
+    // Escreva a lista de números
+    echo $numero . " ";
+}
+echo "<br>";
+
+foreach($alunos as $nome => $idade) {
+    echo $nome . " tem " . $idade . " anos. ";
+}
+echo "<hr>";
+?>
+
