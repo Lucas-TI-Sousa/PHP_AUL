@@ -11,22 +11,22 @@ $numero = 5; //Número fornecido pelo usuário.
 echo "Contagem Regressiva <br>";
 
 // Solução com for
-for ($i = $numero; $i >= 1; $i--) {
-    echo $i . "<br>";
+for ($i = $numero; $i >= 0; $i--) {
+    echo "faltam $i segundos<br>";
 }
 echo "<br>";
 // Solução com while
-while($numero >= 1) {
-    echo "Numero $numero <br>";
+while($numero >= 0) {
+    echo "faltam $numero segundos <br>";
     $numero--;
 }
 echo "<br>";
 // Solução com do-while
 $numero = 5;
 do{
-    echo "Numero $numero <br>";
+    echo "faltam $numero segundos<br>";
     $numero--;
-} while($numero >= 1);
+} while($numero >= 0);
 echo "<br>";
 
 // Desafio 2: Tabuada
@@ -38,7 +38,7 @@ echo "<br>";
 $tabuada_numero = 8;
 
 //Solução com o FOR
-for ($i = 1; $i <=10; $i++){
+for ($i = 1; $i <= 10; $i++){
     $resultado = $tabuada_numero * $i;
 echo "$tabuada_numero * $i =  $resultado<br>"; 
 }
@@ -59,11 +59,33 @@ echo "<br>";
     A sequência de Fibonacci é uma sequência de números inteiros em que cada termo é a soma dos dois anteriores.
     Crie um programa que solicite ao usuário um número N e exiba os N primeiros termos da sequência de Fibonacci.
 */
+$anterior = 0;
+$atual = 1;
+$termos = 10;
 
-// Solução com for
+// Solução com for 
+
+// for($i = 0; $i <= $termos; $i++) {
+//     $proximo = $anterior + $atual;
+//     echo "$proximo";
+//     $anterior = $atual;
+//     $atual = $proximo;
+
+// }
+
 
 
 // Solução com while
+$i = 2;
+while($i <= 10) {
+    $proximo = $anterior + $atual;
+    echo "$proximo";
+    $anterior = $atual;
+    $atual = $proximo;
+    $i++;
+}
+
+echo"<br>";
 
 //// DESAFIOS LÓGICOS - ESTRUTURAS DE REPETIÇÃO
 
@@ -77,11 +99,10 @@ $C = 15;
 
 $soma = $A + $B;
 echo "$A + $B = $soma<br>";
-
+// if($A + $B == $C)
 if($soma == $C){
     echo "A soma de A e B é igual a C";
-} else "incorreto";
-
+} else "A soma de A e B é diferente de C";
 
 echo "<br>";
 
@@ -104,6 +125,11 @@ echo "<br>";
 */
 $numero = 14;
 // Implementação da Verificação de Paridade
+if($numero % 2 == 0){
+    echo "$numero é um numero par";
+}else "$numero é um numero ímpar";
+
+echo "<br>";
 
 
 // Atividade 4: Calcular a média de três números
@@ -115,6 +141,10 @@ $numero2 = 15;
 $numero3 = 20;
 
 // Implementação do Cálculo da Média
+$media = ($numero1 + $numero2 + $numero3) / 3;
+echo "A média entre $numero1 + $numero2 + $numero3 é: $media <br>";
+
+echo "<br>";
 
 // Atividade 5: Verificar se um número é múltiplo de outro
 /*
@@ -123,6 +153,11 @@ $numero3 = 20;
 $numeroMultiplo = 15;
 $multiploDe = 5;
 // Implementação da Verificação de Múltiplo
+if ($numeroMultiplo % $multiploDe == o) {
+    echo "$numeroMultiplo é multiplo de $multiploDe <br>";
+}else "$numeroMultiplo não é multiplo de $multiploDe <br>";
+
+echo "<br>";
 
 //// Atividade 6: Conversão de Horas em Minutos
 /*
@@ -131,8 +166,12 @@ $multiploDe = 5;
 $horas_string = "01:30";
 
 // Implementação de Conversão de Horas em Minutos
+$horas = explode(":", $horas_string);
+$total_minutos = $horas[0] * 60 + $horas[1];
 
-echo "O equivalente total em minutos de $horas_string é: XX <br>";
+echo "O equivalente total em minutos de $horas_string é: $total_minutos <br>";
+
+echo "<br>";
 
 /// Atividade 7: Desenho de Pirâmide
 /*
@@ -140,6 +179,13 @@ echo "O equivalente total em minutos de $horas_string é: XX <br>";
 */
 $altura_piramide = 5;
 // Implementação de Desenho de Pirâmide
+for($i = 1; $i <= $altura_piramide; $i++) {
+    for($j = 1; $j <= $i; $j++) {
+        echo "*";
+    }
+    echo "<br>";
+}
+echo "<br>";
 
 //// Atividade 8: Contagem de Dígitos em um Número
 /*
@@ -147,6 +193,7 @@ $altura_piramide = 5;
 */
 $numeroDigitos = 2048;
 // Implementação de Contagem de Dígitos em um Número
+echo "A quantidade de dígitos do número $numeroDigitos é : " . strlen($numeroDigitos) . "<br>";
 
 //// Atividade 9: Verificação de Palíndromo
 /*
@@ -155,6 +202,15 @@ $numeroDigitos = 2048;
 $palavra = "abbabba";
 
 // Implementação de Verificação de Palíndromo
+$palavra = "abbabba";
+$contrario_dela = strrev($palavra);
+
+if($palavra == $contrario_dela) {
+    echo "A plavra $palavra é um palíndromo <br>";
+} else {
+    echo "A plavra $palavra não é um palíndromo <br>";
+}
+echo "<br>";
 
 //// Atividade 10: Ordenação de Números
 /*
@@ -172,5 +228,8 @@ $numero3 = 7;
 */
 $numeroSoma = 599;
 // Implementação de Soma de Dígitos
+$numeros_array = str_split($numeroSoma);
+$somaDigitos = array_sum($numeros_array);
 
+echo "A soma dos dígitos de $numeroSoma é: $somaDigitos";
 ?>
