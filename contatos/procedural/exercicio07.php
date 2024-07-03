@@ -19,13 +19,13 @@ $contatos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Lista de contatos</title>
 </head>
 <body>
-    <?php foreach($contatos as $contato) : ?>
+<?php foreach($contatos as $contato) : ?>
         <h5><?php echo $contato['nome']; ?> </h5>
+        <p><?php echo $contato['ddd']; ?> </p>
         <p><?php echo $contato['telefone']; ?> </p>
         <p><?php echo $contato['email']; ?> </p>
         <hr>
-
-    <?php endforeach;?>
+    <?php endforeach; ?>
     
 </body>
 </html>
