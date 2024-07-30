@@ -1,4 +1,5 @@
 <?php
+// DELETE FROM itens_compra WHERE id = :id
 $dsn = 'mysql:host=localhost;dbname=lista_compras';
 $user = 'usuario_lista_compras';
 $password = 'Senha@123';
