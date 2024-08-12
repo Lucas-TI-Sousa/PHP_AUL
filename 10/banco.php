@@ -33,7 +33,22 @@ function addItem($nome_produto, $quantidade) {
 
 // Função para atualizar um tem (Update)
 function updateItem($id, $comprado) {
-    
+    $pdo = connect();
+
+    $sql = "UPDATE itens_compra SET comprado=:x WHERE id=:y";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['x' => $comprado, 'y' => $id]);    
+}
+
+// Função para atualizar um tem (Update)
+function updateQuantidadeItem($id, $quantidade) {
+    $pdo = connect();
+
+    $sql = "UPDATE itens_compra SET quantidade=:x WHERE id=:y";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['x' => $quantidade, 'y' => $id]);  
 }
 
 // Função para excluir um item (Delete)
