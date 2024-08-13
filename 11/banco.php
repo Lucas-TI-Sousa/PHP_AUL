@@ -1,10 +1,14 @@
 <?php
+$dsn = 'mysql:host=localhost;dbname=lista_compras';
+$username = 'root';
+$password = '';
 
 // Função para conectar ao banco de dados
 function connect() {
+    global $dsn, $username, $password;
     try {    
-        $pdo = new PDO('mysql:host=localhost;dbname=lista_compras', 'root', '');
-
+        $pdo = new PDO($dsn, $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch (PDOException $e) {
         echo 'Falha na conexao: ' . $e->getMessage();
@@ -35,20 +39,20 @@ function addItem($nome_produto, $quantidade) {
 function updateItem($id, $comprado) {
     $pdo = connect();
 
-    $sql = "UPDATE itens_compra SET comprado=: WHERE id=:y";
+    $sql = "UPDATE itens_compra SET comprado=:comprado WHERE id=:id";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['x' => $comprado, 'y' => $id]);    
+    return $stmt->execute(['comprado' => $comprado, 'id' => $id]);    
 }
 
 // Função para atualizar um tem (Update)
 function updateQuantidadeItem($id, $quantidade) {
     $pdo = connect();
 
-    $sql = "UPDATE itens_compra SET quantidade=:x WHERE id=:y";
+    $sql = "UPDATE itens_compra SET quantidade=:quantidade WHERE id=:id";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['x' => $quantidade, 'y' => $id]);  
+    return $stmt->execute(['quantidade' => $quantidade, 'id' => $id]);
 }
 
 // Função para excluir um item (Delete)
