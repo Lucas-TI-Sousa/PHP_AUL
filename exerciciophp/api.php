@@ -1,26 +1,23 @@
 <?php
-require_once 'Database.php';
+require_once 'DatabaseRepository.php';
 
-$acao = isset($_GET['action']) ? $_GET['action'] : '';
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 
-switch ($acao) {
+switch($action) {
     case 'list':
-        echo json_encode(Database::getAllItems());
+        echo json_encode(DatabaseRepository::getAllContacts());
         break;
-    // case 'add':
-    //     $data = json_decode(file_get_contents('php://input'), true);
-    //     Database::addItem($data['nome'], $data['telefone']);
-    //     break;
-    // case 'update':
-    //     $id = $_GET['id'];
-    //     $data = json_decode(file_get_contents('php://input'), true);
-    //     break;
-    // case 'delte':
-    //     $id = $_GET['id'];
-    //     Database::deleteItem($id); 
-    //     break;
-    // default:
-    //     echo json_encode(['error' => 'Acao Invalida']);
-}
+    case 'get':
+        $id = $_GET['id'];
+        echo json_encode(DatabaseRepository::getContactById($id));
+        break;
+        case 'add':
+            $data = json_decode(file_get_contents('php://input', true));
+            $success = DatabaseRepository::insertContact($data->nome, $data->telefone, $data->email);
+            echo json_encode($success);
+            break;
+        default:
+            echo json_encode(['error' => 'Acao invalida']);
+    }
 
 ?>
