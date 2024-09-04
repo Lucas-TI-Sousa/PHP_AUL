@@ -16,7 +16,7 @@ class DatabaseRepository {
         }
     }
 
-    public static function getAllContacts() {
+    public static function getAllItens() {
         $pdo = self::connect();
         $sql = "SELECT * FROM itens_compra";
         $stmt = $pdo->query($sql);
@@ -31,7 +31,7 @@ class DatabaseRepository {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function insertContact($nome_produto, $quantidade) {
+    public static function insertItens($nome_produto, $quantidade) {
         $pdo = self::connect();
         $sql = "INSERT INTO itens_compra (nome_produto, quantidade) 
                 VALUES (:nome_produto, :quantidade)";
@@ -39,12 +39,24 @@ class DatabaseRepository {
         return $stmt->execute(['nome_produto' => $nome_produto, 'quantidade' => $quantidade]);
     }
 
-    public static function deleteContact($id)
+    public static function deleteItens($id)
     {
         $pdo = self::connect();
         $sql = "DELETE FROM itens_compra WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         return $stmt->execute(['id' => $id]);
+    }
+    public static function updateItem($id, $nome_produto, $quantidade) {
+        $pdo = self::connect();
+        $sql = "UPDATE itens_compra SET nome_produto=:nome_produto, quantidade=:quantidade
+                WHERE id=:id";
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([
+            'nome_produto' => $nome_produto,
+            'quantidade' => $quantidade,
+            'id' => $id
+        ]);
     }
 }
 

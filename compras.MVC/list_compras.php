@@ -1,6 +1,6 @@
 <?php
 require_once 'DatabaseRepository.php';
-$itens = DatabaseRepository::getAllContacts();
+$itens = DatabaseRepository::getAllItens();
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +27,8 @@ $itens = DatabaseRepository::getAllContacts();
                     <td><?= $item['nome_produto']; ?></td>
                     <td><?= $item['quantidade']; ?></td>
                     <td>
-                        <a href="edit_produto.php?id=<?= $item['id']; ?>">Editar</a>
-                        <a href="delete_produto.php?id=<?= $item['id']; ?>" 
+                        <a href="edit_compras.php?id=<?= $item['id']; ?>">Editar</a>
+                        <a href="delete_compras.php?id=<?= $item['id']; ?>" 
                             onclick="return confirm('Tem certeza que deseja deletar este produto?');">Deletar</a>
                     </td>
                 </tr>

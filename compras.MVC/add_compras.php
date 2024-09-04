@@ -3,7 +3,7 @@ require_once 'DatabaseRepository.php';
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome_produto = $_POST['nome_produto'];
     $quantidade = $_POST['quantidade'];
-    DatabaseRepository::insertContact($nome_produto, $quantidade);
+    DatabaseRepository::insertItens($nome_produto, $quantidade);
     header('Location: list_compras.php');
     exit;
 }
