@@ -5,4 +5,4 @@ $id = $_GET['id'];
 DatabaseRepository::deleteContact($id);
 header('Location: list_compras.php');
 exit;
-?>s
+?>
