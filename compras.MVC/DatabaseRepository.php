@@ -23,7 +23,7 @@ class DatabaseRepository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        
     }
 
-    public static function getContactById($id) {
+    public static function getItemById($id) {
         $pdo = self::connect();
         $sql = "SELECT * FROM itens_compra WHERE id = :id";
         $stmt = $pdo->prepare($sql);

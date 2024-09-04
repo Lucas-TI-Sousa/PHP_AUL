@@ -2,7 +2,7 @@
 
 require_once 'DatabaseRepository.php';
 $id = $_GET['id'];
-$item = DatabaseRepository::getContactById($id);
+$item = DatabaseRepository::getItemById($id);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome_produto = $_POST['nome_produto'];
