@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     DatabaseRepository::insertContact($nome, $telefone, $email);
-    header('Location: list_contatos.php');
+    header('Location: list_contact.php');
     exit;
 }
 ?>
@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <h1>Adicionar Contato</h1>
 
-    <form action="add_contatos.php" method="post">
+    <form action="add_contact.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" required>
         <br>
@@ -35,6 +35,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Adicionar</button>
     </form>
 
-    <a href="list_contacts.php">Voltar para a lista de contatos</a>
+    <a href="list_contact.php">Voltar para a lista de contatos</a>
 </body>
 </html>
