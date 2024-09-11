@@ -12,12 +12,13 @@ $itens = DatabaseRepository::getAllItens();
 </head>
 <body>
     <h1>Lista de Compras </h1>
-    <a href="add_compras.php">Adicionar Novo produto</a>
+    <a href="add_item.php">Adicionar Novo produto</a>
     <table border="1">
         <thead>
             <tr>
                 <th>Nome-produto</th>
                 <th>quantidade</th>
+                <th>comprado</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -26,11 +27,12 @@ $itens = DatabaseRepository::getAllItens();
                 <tr>
                     <td><?= $item['nome_produto']; ?></td>
                     <td><?= $item['quantidade']; ?></td>
+                    <td><?=  $item['comprado'] ? 'Sim' : 'Não' ?></td>
                     <td>
-                        <a href="edit_compras.php?id=<?= $item['id']; ?>">Editar</a>
-                        <a href="delete_compras.php?id=<?= $item['id']; ?>" 
+                        <a href="edit_item.php?id=<?= $item['id']; ?>">Editar</a>
+                        <a href="delete_item.php?id=<?= $item['id']; ?>" 
                             onclick="return confirm('Tem certeza que deseja deletar este produto?');">Deletar</a>
-                    </td>
+                    </td> 
                 </tr>
             <?php endforeach; ?>
         </tbody>

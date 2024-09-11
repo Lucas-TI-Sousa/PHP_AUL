@@ -18,9 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Adicionar compra</h1>
+    <h1>Adicionar Item à lista de compra</h1>
 
-    <form action="add_compras.php" method="post">
+    <form action="add_item.php" method="post">
         <label for="nome_produto">nome-produto:</label>
         <input type="text" name="nome_produto" id="nome_produto" required>
         <br>

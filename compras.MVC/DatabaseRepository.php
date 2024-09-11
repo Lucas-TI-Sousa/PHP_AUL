@@ -58,5 +58,16 @@ class DatabaseRepository {
             'id' => $id
         ]);
     }
+    public static function comprarItem($id, $comprado) {
+        $pdo = self::connect();
+        $sql = "UPDATE itens_compra SET comprado=:comprado
+                WHERE id=:id";
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([            
+            'comprado' => $comprado,
+            'id' => $id
+        ]);
+    }
 }
 
